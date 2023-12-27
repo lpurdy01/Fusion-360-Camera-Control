@@ -1,0 +1,7 @@
+{
+    "python.autoComplete.extraPaths": ["PATH_TO_FUSION360_API_PYTHON_DEFS"],
+    "python.analysis.extraPaths": ["PATH_TO_FUSION360_API_PYTHON_DEFS"],
+    "python.defaultInterpreterPath": "PATH_TO_FUSION360_PYTHON_EXECUTABLE",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic"
+}
