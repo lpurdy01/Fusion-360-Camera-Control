@@ -1,5 +1,8 @@
-# Fusion-360-Game-Controller-Input
-A Fusion 360 script that allows for gamepad / controller input to control the view / camera in Fusion 360
+# Fusion-360-Camera-Control
+This is a repo containing a collection of Fusion360 scripts and Add-Ins that allow for control of the Camera. 
+
+## Controller_Input_v2
+This is an Add-In instead of a script. It is designed to work with the os3m mouse. 
 
 ## Rotate_test_v3
 This is the first functional version that can take in gamepad controls using pygame and manipulate the camera in fusion 360. 
