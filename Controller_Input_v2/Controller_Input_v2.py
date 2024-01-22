@@ -2,6 +2,7 @@ import adsk.core, adsk.fusion, adsk.cam, traceback
 from threading import Thread
 from .lib_installer import install_libs
 import time
+import os, sys
 
 main_thread = None
 running = False
@@ -74,7 +75,21 @@ def run(context):
         ui.messageBox('Starting Add-In')
 
         # Install required libraries
-        install_libs()
+        # Get the path of the current script
+        script_path = os.path.abspath(__file__)
+
+        # Get the parent directory of the script
+        parent_directory = os.path.dirname(script_path)
+
+        # Construct the path to the 'site-packages' directory
+        venv_site_packages = os.path.join(parent_directory, 'venv', 'Lib', 'site-packages')
+
+        # Save the original sys.path
+        original_sys_path = sys.path.copy()
+
+        # Add the new path to sys.path
+        sys.path.append(venv_site_packages)
+
 
         # Import the libraries for real
         global pygame, np, hid, setup_pygame_window, update_pygame_window, update_pygame_window_simple_counter, pygame_print_debug_text, ControllerInput, CameraController
@@ -84,6 +99,9 @@ def run(context):
         from .pygame_ui import setup_pygame_window, update_pygame_window, update_pygame_window_simple_counter, pygame_print_debug_text
         from .controller_input import ControllerInput
         from .fusion_camera_control import CameraController
+
+        # Reset sys.path to its original state
+        sys.path = original_sys_path.copy()
 
         # Set start time
         start_time = time.time()
